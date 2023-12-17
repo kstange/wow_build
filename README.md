@@ -14,15 +14,15 @@ something with it.
 
 This script just uses the `.luacheckrc` to run a check against the code for a
 particular mod. I'll periodically update the globals list in the config so
-that it doesn't produre warnings for valid functions, but this does help me
+that it doesn't produce warnings for valid functions. This helps me
 discover typos in global function names and values or attempts to overwrite
-built-in game functionality.
+built-in game functionality, as well as things like global misuse inside of
+functions.
 
-Someday I might consider trying to check out and walk all the WoW code for
-a list of known globals so that I don't have to manually add what I want to
-use... someday.
+I might consider trying to check out and walk all the WoW code for a list of
+known globals so that I don't have to manually add what I want to use. Maybe.
 
-The luacheck program needs to be intsalled in `luarocks/bin/luacheck`
+The luacheck program needs to be installed in `luarocks/bin/luacheck`
 
 If you have `luarocks` installed from your distro, something like this will
 work (from within the repo):
