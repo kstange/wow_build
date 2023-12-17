@@ -1,15 +1,15 @@
 [submodule "MasqueBlizzBars"]
 	path = MasqueBlizzBars
-	url = ./
+	url = https://github.com/kstange/MasqueBlizzBars.git
 [submodule "MerchantPlus"]
 	path = MerchantPlus
-	url = ./
+	url = https://github.com/kstange/MerchantPlus.git
 [submodule "OPieMasque"]
 	path = OPieMasque
-	url = ./
+	url = https://github.com/kstange/OPieMasque.git
 [submodule "MasqueBlizzInv"]
 	path = MasqueBlizzInv
-	url = ./
+	url = https://github.com/kstange/MasqueBlizzInv.git
 [submodule "packager"]
 	path = packager
-	url = ./
+	url = https://github.com/BigWigsMods/packager.git
