@@ -1,0 +1,15 @@
+[submodule "MasqueBlizzBars"]
+	path = MasqueBlizzBars
+	url = ./
+[submodule "MerchantPlus"]
+	path = MerchantPlus
+	url = ./
+[submodule "OPieMasque"]
+	path = OPieMasque
+	url = ./
+[submodule "MasqueBlizzInv"]
+	path = MasqueBlizzInv
+	url = ./
+[submodule "packager"]
+	path = packager
+	url = ./
