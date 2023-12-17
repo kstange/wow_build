@@ -36,8 +36,8 @@ luarocks install luacheck --tree luarocks
 ## Other Notes
 
 The symlinks point to my own game paths through WSL, but they obviously could
-point anywhere. `.gitmodules` points to the repos that I maintain, plus one
-for the packager.
+point anywhere. `.gitmodules` points to the packager so it's easy to find when
+setting up the repo.
 
 This could arguably be used by anyone for any WoW development where packager
 is involved, but your mileage may vary.
