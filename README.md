@@ -27,7 +27,9 @@ The luacheck program needs to be intsalled in `luarocks/bin/luacheck`
 If you have `luarocks` installed from your distro, something like this will
 work (from within the repo):
 
-```luarocks install luacheck --tree luarocks```
+```bash
+luarocks install luacheck --tree luarocks
+```
 
 ## Other Notes
 
