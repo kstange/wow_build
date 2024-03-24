@@ -70,8 +70,6 @@ read_globals = {
   "GameTooltip_ShowCompareItem",
   "GetBuybackItemInfo",
   "GetBuybackItemLink",
-  "GetItemInfo",
-  "GetItemInfoInstant",
   "GetMerchantItemCostInfo",
   "GetMerchantItemCostItem",
   "GetMerchantItemID",
