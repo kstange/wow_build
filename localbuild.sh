@@ -25,6 +25,10 @@ if [[ -e ${DIR}/${ADDON}_Wrath.toc ]] ; then
   echo "Adding Wrath Classic clients..."
   CLIENTS="${CLIENTS} classic classic_ptr"
 fi
+if [[ -e ${DIR}/${ADDON}_Cata.toc ]] ; then
+  echo "Adding Cata Classic clients..."
+  CLIENTS="${CLIENTS} classic_beta"
+fi
 for CLIENT in ${CLIENTS}; do
   if [[ -d ${BASE}/_${CLIENT}_ ]] ; then
     echo "Installing ${ADDON} for ${CLIENT}..."
