@@ -16,18 +16,14 @@ if [[ $? -ne 0 ]] ; then
   echo "ERROR: Failed to complete build! Giving up..."
   exit
 fi
-CLIENTS="retail ptr xptr"
+CLIENTS="retail ptr xptr beta"
 if [[ -e ${DIR}/${ADDON}_Vanilla.toc ]] ; then
   echo "Adding Classic Era clients..."
   CLIENTS="${CLIENTS} classic_era classic_era_ptr"
 fi
-if [[ -e ${DIR}/${ADDON}_Wrath.toc ]] ; then
-  echo "Adding Wrath Classic clients..."
-  CLIENTS="${CLIENTS} classic classic_ptr"
-fi
 if [[ -e ${DIR}/${ADDON}_Cata.toc ]] ; then
-  echo "Adding Cata Classic clients..."
-  CLIENTS="${CLIENTS} classic_beta"
+  echo "Adding Cataclysm Classic clients..."
+  CLIENTS="${CLIENTS} classic classic_ptr classic_beta"
 fi
 for CLIENT in ${CLIENTS}; do
   if [[ -d ${BASE}/_${CLIENT}_ ]] ; then
