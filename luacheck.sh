@@ -9,4 +9,4 @@ DIRS="${DIR}/*.lua"
 if [[ -d ${DIR}/Locales/ ]] ; then
   DIRS="${DIRS} ${DIR}/Locales/*.lua"
 fi
-${BASE}/luarocks/bin/luacheck ${DIRS} --config ${BASE}/.luacheckrc
+${BASE}/lua_modules/bin/luacheck ${DIRS} --config ${BASE}/.luacheckrc
