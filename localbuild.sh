@@ -22,7 +22,7 @@ if [[ -e ${DIR}/${ADDON}_Vanilla.toc ]] ; then
   CLIENTS="${CLIENTS} classic_era classic_era_ptr"
 fi
 if [[ -e ${DIR}/${ADDON}_Cata.toc ]] ; then
-  echo "Adding Cataclysm Classic clients..."
+  echo "Adding Classic clients..."
   CLIENTS="${CLIENTS} classic classic_ptr classic_beta"
 fi
 for CLIENT in ${CLIENTS}; do
