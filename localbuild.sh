@@ -10,6 +10,13 @@ if [[ ${ADDON} == "" ]] ; then
   echo "ERROR: Addon name is not known! Bailing out..."
   exit
 fi
+echo "Checking addon ${ADDON}..."
+`dirname $0`/luacheck.sh ${DIR}
+if [[ $? -gt 1 ]] ; then
+  echo "ERROR: LUA Check failed! Please fix errors and rebuild..."
+  exit
+fi
+echo
 echo "Building addon ${ADDON}..."
 ${BASE}/packager/release.sh -dz -t ${DIR}
 if [[ $? -ne 0 ]] ; then
