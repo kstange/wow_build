@@ -104,7 +104,6 @@ read_globals = {
   "MAX_ITEM_COST",
   "MerchantBuyBackItem",
   "MerchantBuyBackItemItemButton",
-  "MerchantBuyBackItemMoneyFrame",
   "MerchantBuyBackItemName",
   "MerchantExtraCurrencyBg",
   "MerchantExtraCurrencyInset",
