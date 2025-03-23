@@ -24,14 +24,16 @@ if [[ $? -ne 0 ]] ; then
   exit
 fi
 CLIENTS="retail ptr xptr beta"
-if [[ -e ${DIR}/${ADDON}_Vanilla.toc ]] ; then
-  echo "Adding Classic Era clients..."
-  CLIENTS="${CLIENTS} classic_era classic_era_ptr"
-fi
-if [[ -e ${DIR}/${ADDON}_Cata.toc ]] ; then
-  echo "Adding Classic clients..."
-  CLIENTS="${CLIENTS} classic classic_ptr classic_beta"
-fi
+VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:space:]' | sed 's/[0-9]\{4\}\(,\|$\)/\n/g' | sort -u)
+for VERSION in ${VERSIONS}; do
+  if [[ ${VERSION} -lt 2 ]] ; then
+    echo "Adding Classic Era clients..."
+    CLIENTS="${CLIENTS} classic_era classic_era_ptr"
+  elif [[ ${VERSION} -ge 2 && ${VERSION} -lt 11 ]] ; then
+    echo "Adding Classic clients..."
+    CLIENTS="${CLIENTS} classic classic_ptr classic_beta"
+  fi
+done
 for CLIENT in ${CLIENTS}; do
   if [[ -d ${BASE}/_${CLIENT}_ ]] ; then
     echo "Installing ${ADDON} for ${CLIENT}..."
