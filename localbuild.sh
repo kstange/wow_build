@@ -26,10 +26,12 @@ fi
 CLIENTS="retail ptr xptr beta"
 VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:space:]' | sed 's/[0-9]\{4\}\(,\|$\)/\n/g' | sort -u)
 for VERSION in ${VERSIONS}; do
-  if [[ ${VERSION} -lt 2 ]] ; then
+  echo $CLIENTS | grep -q -v "\bclassic\b"; CLASSIC_ALREADY=$?
+  echo $CLIENTS | grep -q -v "\bclassic_era\b"; CLASSIC_ERA_ALREADY=$?
+  if [[ ${VERSION} -lt 2 && ${CLASSIC_ERA_ALREADY} -eq 0 ]] ; then
     echo "Adding Classic Era clients..."
     CLIENTS="${CLIENTS} classic_era classic_era_ptr"
-  elif [[ ${VERSION} -ge 2 && ${VERSION} -lt 11 ]] ; then
+  elif [[ ${VERSION} -ge 2 && ${VERSION} -lt 11 && ${CLASSIC_ALREADY} -eq 0 ]] ; then
     echo "Adding Classic clients..."
     CLIENTS="${CLIENTS} classic classic_ptr classic_beta"
   fi
