@@ -43,6 +43,7 @@ read_globals = {
   -- MasqueBlizzInv
   "InspectPaperDollFrame",
   "BankFrame",
+  "BankPanel",
   "BankSlotsFrame",
   "ReagentBankFrame",
   "GuildBankFrame",
@@ -91,7 +92,6 @@ read_globals = {
   "GetMerchantItemCostInfo",
   "GetMerchantItemCostItem",
   "GetMerchantItemID",
-  "GetMerchantItemInfo",
   "GetMerchantItemLink",
   "GetMerchantNumItems",
   "GetNumBuybackItems",
@@ -152,6 +152,16 @@ read_globals = {
   "UnitName",
   -- OPieMasque
   "OPie",
+  -- DungeonTeleportButtons
+  "C_ChallengeMode",
+  "C_Spell",
+  "ChallengesFrame",
+  "GetFlyoutID",
+  "GetNumFlyouts",
+  "InCombatLockdown",
+  "IsSpellKnown",
+  "strsplit",
+  "table.removemulti",
 }
 globals = {
   -- MerchantPlus
