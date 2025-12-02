@@ -162,6 +162,14 @@ read_globals = {
   "IsSpellKnown",
   "strsplit",
   "table.removemulti",
+  -- QuickSplit
+  "C_Timer",
+  "GetCursorInfo",
+  "GetGuildBankItemInfo",
+  "GetGuildBankItemLink",
+  "IsAltKeyDown",
+  "PickupGuildBankItem",
+  "SplitGuildBankItem",
 }
 globals = {
   -- MerchantPlus
