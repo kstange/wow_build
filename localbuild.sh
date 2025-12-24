@@ -18,7 +18,7 @@ if [[ $? -gt 1 ]] ; then
 fi
 echo
 echo "Building addon ${ADDON}..."
-${BASE}/packager/release.sh -dz -t ${DIR}
+${BASE}/packager/release.sh -d -t ${DIR}
 if [[ $? -ne 0 ]] ; then
   echo "ERROR: Failed to complete build! Giving up..."
   exit
