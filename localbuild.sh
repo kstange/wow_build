@@ -38,6 +38,7 @@ done
 for CLIENT in ${CLIENTS}; do
   if [[ -d ${BASE}/_${CLIENT}_ ]] ; then
     echo "Installing ${ADDON} for ${CLIENT}..."
+    mkdir -p ${BASE}/_${CLIENT}_/Interface/Addons/
     rm -rf ${BASE}/_${CLIENT}_/Interface/Addons/${ADDON}/
     cp -ax ${DIR}/.release/${ADDON} ${BASE}/_${CLIENT}_/Interface/Addons/
   else
