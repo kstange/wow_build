@@ -23,23 +23,18 @@ if [[ $? -ne 0 ]] ; then
   echo "ERROR: Failed to complete build! Giving up..."
   exit
 fi
-CLIENTS="retail ptr xptr beta"
-VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:space:]' | sed 's/[0-9]\{4\}\(,\|$\)/\n/g' | sort -u)
-for VERSION in ${VERSIONS}; do
-  echo $CLIENTS | grep -q -v "\bclassic\b"; CLASSIC_ALREADY=$?
-  echo $CLIENTS | grep -q -v "\bclassic_era\b"; CLASSIC_ERA_ALREADY=$?
-  echo $CLIENTS | grep -q -v "\banniversary\b"; ANNIVERSARY_ALREADY=$?
-  if [[ ${VERSION} -lt 3 && ${ANNIVERSARY_ALREADY} -eq 0 ]] ; then
-    echo "Adding Anniversary clients..."
-    CLIENTS="${CLIENTS} anniversary"
-  elif [[ ${VERSION} -lt 2 && ${CLASSIC_ERA_ALREADY} -eq 0 ]] ; then
-    echo "Adding Classic Era clients..."
-    CLIENTS="${CLIENTS} classic_era classic_era_ptr"
-  elif [[ ${VERSION} -ge 2 && ${VERSION} -lt 11 && ${CLASSIC_ALREADY} -eq 0 ]] ; then
-    echo "Adding Classic clients..."
-    CLIENTS="${CLIENTS} classic classic_ptr classic_beta"
+INTERFACE_MAJOR_VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:space:]' | sed 's/[0-9]\{4\}\(,\|$\)/\n/g;' | sort -u -n)
+CLIENTS=""
+for CLIENT_DIR in $(basename -a ${BASE}/_*_); do
+  CLIENT=${CLIENT_DIR:1:-1}
+  WINDOWS_PATH=$(wslpath -w ${BASE}/${CLIENT_DIR})
+  CLIENT_MAJOR_VERSION=$(powershell.exe \(Get-Item -Path \"${WINDOWS_PATH}\\Wow*.exe\"\).VersionInfo.FileVersion | cut -d. -f1)
+  if [[ $( echo "${INTERFACE_MAJOR_VERSIONS}" | grep "^${CLIENT_MAJOR_VERSION}$" ) ]] ; then
+    echo "Adding ${CLIENT} (${CLIENT_MAJOR_VERSION}.x)..."
+    CLIENTS="${CLIENTS} ${CLIENT}"
   fi
 done
+
 for CLIENT in ${CLIENTS}; do
   if [[ -d ${BASE}/_${CLIENT}_ ]] ; then
     echo "Installing ${ADDON} for ${CLIENT}..."
