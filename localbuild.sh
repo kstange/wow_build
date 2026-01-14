@@ -28,7 +28,11 @@ VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:s
 for VERSION in ${VERSIONS}; do
   echo $CLIENTS | grep -q -v "\bclassic\b"; CLASSIC_ALREADY=$?
   echo $CLIENTS | grep -q -v "\bclassic_era\b"; CLASSIC_ERA_ALREADY=$?
-  if [[ ${VERSION} -lt 2 && ${CLASSIC_ERA_ALREADY} -eq 0 ]] ; then
+  echo $CLIENTS | grep -q -v "\banniversary\b"; ANNIVERSARY_ALREADY=$?
+  if [[ ${VERSION} -lt 3 && ${ANNIVERSARY_ALREADY} -eq 0 ]] ; then
+    echo "Adding Anniversary clients..."
+    CLIENTS="${CLIENTS} anniversary"
+  elif [[ ${VERSION} -lt 2 && ${CLASSIC_ERA_ALREADY} -eq 0 ]] ; then
     echo "Adding Classic Era clients..."
     CLIENTS="${CLIENTS} classic_era classic_era_ptr"
   elif [[ ${VERSION} -ge 2 && ${VERSION} -lt 11 && ${CLASSIC_ALREADY} -eq 0 ]] ; then
