@@ -4,6 +4,7 @@ read_globals = {
   -- Generic / Core
   "C_AddOns",
   "C_Container",
+  "C_CurveUtil",
   "C_Heirloom",
   "C_Item",
   "C_MerchantFrame",
@@ -14,6 +15,9 @@ read_globals = {
   "C_ToyBox",
   "C_TradeSkillUI",
   "C_TransmogCollection",
+  "C_UnitAuras",
+  "CreateAtlasMarkup",
+  "CreateColor",
   "CreateFrame",
   "CreateFromMixins",
   "format",
@@ -27,6 +31,7 @@ read_globals = {
   "max",
   "UIParent",
   -- MasqueBlizzBars
+  "BuffBarCooldownViewer",
   "BuffIconCooldownViewer",
   "EssentialCooldownViewer",
   "ExtraActionButton1",
@@ -177,4 +182,6 @@ globals = {
   "MerchantPlusItemList",
   "MerchantPlusTab",
   "MerchantPlusTabFrame",
+  -- MasqueBlizzBars
+  "BuffBarCooldownViewer",
 }
