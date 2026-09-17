@@ -4,6 +4,7 @@ read_globals = {
   -- Generic / Core
   "C_AddOns",
   "C_Container",
+  "C_CurrencyInfo",
   "C_CurveUtil",
   "C_Heirloom",
   "C_Item",
