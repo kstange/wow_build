@@ -23,15 +23,22 @@ if [[ $? -ne 0 ]] ; then
   echo "ERROR: Failed to complete build! Giving up..."
   exit
 fi
-INTERFACE_MAJOR_VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:space:]' | sed 's/[0-9]\{4\}\(,\|$\)/\n/g;' | sort -u -n)
+INTERFACE_MAJOR_MINOR_VERSIONS=$(grep "## Interface:" ${DIR}/${ADDON}.toc | cut -d':' -f2 | tr -d '[:space:]' | sed 's/[0-9]\{2\}\(,\|$\)/\n/g;' | sort -u -n)
 CLIENTS=""
 for CLIENT_DIR in $(basename -a ${BASE}/_*_); do
   CLIENT=${CLIENT_DIR:1:-1}
   WINDOWS_PATH=$(wslpath -w ${BASE}/${CLIENT_DIR})
-  CLIENT_MAJOR_VERSION=$(powershell.exe \(Get-Item -Path \"${WINDOWS_PATH}\\Wow*.exe\"\).VersionInfo.FileVersion | cut -d. -f1)
-  if [[ $( echo "${INTERFACE_MAJOR_VERSIONS}" | grep "^${CLIENT_MAJOR_VERSION}$" ) ]] ; then
-    echo "Adding ${CLIENT} (${CLIENT_MAJOR_VERSION}.x)..."
+  CLIENT_VERSION=$(powershell.exe \(Get-Item -Path \"${WINDOWS_PATH}\\Wow*.exe\"\).VersionInfo.FileVersion)
+  CLIENT_MAJOR_VERSION=$(echo $CLIENT_VERSION | cut -d. -f1)
+  CLIENT_MINOR_VERSION=$(echo $CLIENT_VERSION | cut -d. -f2)
+  CLIENT_MAJOR_MINOR_VERSION=$(printf "%d%02d" ${CLIENT_MAJOR_VERSION} ${CLIENT_MINOR_VERSION})
+  if [[ $( echo "${INTERFACE_MAJOR_MINOR_VERSIONS}" | grep "\b${CLIENT_MAJOR_MINOR_VERSION}" ) ]] ; then
+    echo "Adding ${CLIENT} (${CLIENT_MAJOR_VERSION}.${CLIENT_MINOR_VERSION}.x)..."
     CLIENTS="${CLIENTS} ${CLIENT}"
+  elif [[ ${CLIENT_VERSION} == "" ]] ; then
+    echo "Skipping ${CLIENT} (not found)..."
+  else
+    echo "Skipping ${CLIENT} (${CLIENT_MAJOR_VERSION}.${CLIENT_MINOR_VERSION}.x)..."
   fi
 done
 
